@@ -9,5 +9,6 @@ defmodule CymWeb.Router do
     pipe_through :api
 
     resources "/users", UserController
-  end
+    resources "/skills", SkillController
+    end
 end
