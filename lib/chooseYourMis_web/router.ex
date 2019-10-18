@@ -7,5 +7,7 @@ defmodule CymWeb.Router do
 
   scope "/api", CymWeb do
     pipe_through :api
+
+    resources "/users", UserController
   end
 end
