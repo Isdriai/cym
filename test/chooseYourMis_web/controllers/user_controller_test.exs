@@ -7,14 +7,16 @@ defmodule CymWeb.UserControllerTest do
   @create_attrs %{
     firstName: "some firstName",
     lastName: "some lastName",
-    mail: "some mail"
+    mail: "some mail",
+    type: User.Type.Candidate
   }
   @update_attrs %{
     firstName: "some updated firstName",
     lastName: "some updated lastName",
-    mail: "some updated mail"
+    mail: "some updated mail",
+    type: User.Type.Candidate
   }
-  @invalid_attrs %{firstName: nil, lastName: nil, mail: nil}
+  @invalid_attrs %{firstName: nil, lastName: nil, mail: nil, type: nil}
 
   def fixture(:user) do
     {:ok, user} = Users.create_user(@create_attrs)
@@ -43,7 +45,8 @@ defmodule CymWeb.UserControllerTest do
                "id" => id,
                "firstName" => "some firstName",
                "lastName" => "some lastName",
-               "mail" => "some mail"
+               "mail" => "some mail",
+               "type" => User.Type.Candidate
              } = json_response(conn, 200)["data"]
     end
 
@@ -66,7 +69,8 @@ defmodule CymWeb.UserControllerTest do
                "id" => id,
                "firstName" => "some updated firstName",
                "lastName" => "some updated lastName",
-               "mail" => "some updated mail"
+               "mail" => "some updated mail",
+               "type" => User.Type.Candidate
              } = json_response(conn, 200)["data"]
     end
 

@@ -14,6 +14,7 @@ defmodule CymWeb.UserView do
     %{id: user.id,
       firstName: user.firstName,
       lastName: user.lastName,
-      mail: user.mail}
+      mail: user.mail,
+      type: user.type}
   end
 end

@@ -6,7 +6,8 @@ defmodule Cym.Repo.Migrations.CreateUsers do
       add :id, :binary_id, primary_key: true
       add :firstName, :string
       add :lastName, :string
-      add :mail, :string
+      add :mail, :string,
+      add :type, :string
 
       timestamps()
     end
