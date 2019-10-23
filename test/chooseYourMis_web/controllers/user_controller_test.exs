@@ -8,13 +8,13 @@ defmodule CymWeb.UserControllerTest do
     firstName: "some firstName",
     lastName: "some lastName",
     mail: "some mail",
-    type: User.Type.Candidate
+    type: :candidate
   }
   @update_attrs %{
     firstName: "some updated firstName",
     lastName: "some updated lastName",
     mail: "some updated mail",
-    type: User.Type.Candidate
+    type: :candidate
   }
   @invalid_attrs %{firstName: nil, lastName: nil, mail: nil, type: nil}
 
@@ -46,7 +46,7 @@ defmodule CymWeb.UserControllerTest do
                "firstName" => "some firstName",
                "lastName" => "some lastName",
                "mail" => "some mail",
-               "type" => User.Type.Candidate
+               "type" => "candidate"
              } = json_response(conn, 200)["data"]
     end
 
@@ -70,7 +70,7 @@ defmodule CymWeb.UserControllerTest do
                "firstName" => "some updated firstName",
                "lastName" => "some updated lastName",
                "mail" => "some updated mail",
-               "type" => User.Type.Candidate
+               "type" => "candidate"
              } = json_response(conn, 200)["data"]
     end
 
@@ -87,9 +87,9 @@ defmodule CymWeb.UserControllerTest do
       conn = delete(conn, Routes.user_path(conn, :delete, user))
       assert response(conn, 204)
 
-      assert_error_sent 404, fn ->
+      assert_error_sent(404, fn ->
         get(conn, Routes.user_path(conn, :show, user))
-      end
+      end)
     end
   end
 
