@@ -6,8 +6,18 @@ defmodule Cym.UsersTest do
   describe "users" do
     alias Cym.Users.User
 
-    @valid_attrs %{firstName: "some firstName", lastName: "some lastName", mail: "some mail", type: User.Type.Candidate}
-    @update_attrs %{firstName: "some updated firstName", lastName: "some updated lastName", mail: "some updated mail", type: User.Type.Candidate}
+    @valid_attrs %{
+      firstName: "some firstName",
+      lastName: "some lastName",
+      mail: "some mail",
+      type: :candidate
+    }
+    @update_attrs %{
+      firstName: "some updated firstName",
+      lastName: "some updated lastName",
+      mail: "some updated mail",
+      type: :candidate
+    }
     @invalid_attrs %{firstName: nil, lastName: nil, mail: nil, type: nil}
 
     def user_fixture(attrs \\ %{}) do
@@ -34,7 +44,7 @@ defmodule Cym.UsersTest do
       assert user.firstName == "some firstName"
       assert user.lastName == "some lastName"
       assert user.mail == "some mail"
-      assert user.type == User.Type.Candidate
+      assert user.type == :candidate
     end
 
     test "create_user/1 with invalid data returns error changeset" do
@@ -47,7 +57,7 @@ defmodule Cym.UsersTest do
       assert user.firstName == "some updated firstName"
       assert user.lastName == "some updated lastName"
       assert user.mail == "some updated mail"
-      assert user.type == User.Type.Candidate
+      assert user.type == :candidate
     end
 
     test "update_user/2 with invalid data returns error changeset" do
